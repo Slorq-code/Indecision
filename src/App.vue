@@ -1,5 +1,6 @@
 
 <template>
+  <image src="./assets/logo.png" />
   <MyIndecision/>
 </template>
 

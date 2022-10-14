@@ -6,10 +6,10 @@
       <input 
         v-model="question"
         type="text" 
-        placeholder="Hazme una pregunta"
+        placeholder="Hazme una pregunta cerrada"
       >
       <p>Recuerda terminar con un signo de interrogación (?)</p>
-      <div>
+      <div v-if="isValidQuistion" >
         <h2>{{answer }}</h2>  
       </div>
     </div>
@@ -23,6 +23,7 @@ export default {
       question: null,
       answer: null,
       img: null,
+      isValidQuistion: false,
     }
   },
   methods: { 
@@ -36,8 +37,13 @@ export default {
   },
   watch: {
     question (value) {
+
+      this.isValidQuistion = false
+
       if (  !value.includes("?")) return
       
+      this.isValidQuistion = true
+
       this.getAnswers()
     }
   }
